@@ -11,7 +11,7 @@ In recent years, generative models have been very popular in medical imaging app
 *Figure 1:  Controlling polyp generation using custom masks while leveraging largely accessible non-polyp/negative images. We turned negative samples into positive ones with controlled polyp shape, size and location.*
 
 ### General Comparison with Conventional Approaches
-![Comparison](figures/intro2_controlnet.png)
+![Comparison](figures/intro2_controlnet.svg)
 *Figure 2: Augmentation strategies; (a) Conventional augmentation techniques present limited diversity among samples, (b) Conventional generative approaches use all generated images irrespective of their clinical relevance, and (c) Our approach has an additional detection step that selects generated images which are detected with a high confidence score, ensuring clinical relevance.*
 
 The repository will be updated soon!
