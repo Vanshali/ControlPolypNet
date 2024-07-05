@@ -18,4 +18,5 @@ In recent years, generative models have been very popular in medical imaging app
 - *ControlPolypNet* consists of three main parts: (a) Stable Diffusion U-Net architecture loaded with pre-trained weights of SD v1-5, (b) ControlNet, and (c) YOLOv8, a detector pre-trained on the polyp images. 
 - To make the model learn the mapping $N' \rightarrow P'$, we prepared our training set such that initially, it learns $M \rightarrow P$.
 ![ControlPolypNet](figures/controlnet_diag1.svg)
+*Figure 3: The proposed framework uses custom-masked images as input control with a ``polyp" text prompt. The pre-processing pipeline shows the elimination of uninformative negative frames. Custom masks are used to generate polyps during the evaluation phase of \textit{ControlPolypNet}. The generated polyp images are fed to a YOLOv8 detector that selects clinically significant frames with a confidence score $>=0.7$.*
 The repository will be updated soon!
