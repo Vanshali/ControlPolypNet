@@ -43,4 +43,15 @@ Step 1:  To load the test set, prepare a JSON file similar to sample_test.json a
 Step 2: Run *train.py* with max_epochs=0 in line 40 and set resume_path in line 14 to the path of the checkpoint you want to use for evaluation. \
 Step 3: After obtaining the generated images, validate them through the Detector trained in subsection Training, step 8. 
 
-The repository will be updated soon!
+### Citation
+Please cite our work if you find it useful.
+```
+@inproceedings{sharma2024controlpolypnet,
+  title={ControlPolypNet: Towards Controlled Colon Polyp Synthesis for Improved Polyp Segmentation},
+  author={Sharma, Vanshali and Kumar, Abhishek and Jha, Debesh and Bhuyan, MK and Das, Pradip K and Bagci, Ulas},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={2325--2334},
+  year={2024}
+}
+
+```
