@@ -31,7 +31,7 @@ Step 2: To obtain bounding box labels for the input control (obtained from step 
 Step 3: To use the pre-trained weights of SD v1-5, you can download them from https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main. You want the file "v1-5-pruned.ckpt". \
 Step 4: As mentioned on the [ControlNet official GitHub page](https://github.com/lllyasviel/ControlNet/blob/main/docs/train.md), "all weights inside the ControlNet are also copied from SD so that no layer is trained from scratch, and you are still finetuning the entire model." Therefore, follow the below command if the SD filename is "./models/v1-5-pruned.ckpt" and you want to save the processed model (SD+ControlNet) at location "./models/control_sd15_ini.ckpt".
 ```
-python tool_add_control.py ./models/v1-5-pruned.ckpt ./models/control_sd15_ini.ckpt
+python3 tool_add_control.py ./models/v1-5-pruned.ckpt ./models/control_sd15_ini.ckpt
 ```
 Step 5: To load the training set, prepare a JSON file similar to sample_train.json and provide its path in *dataset_train_load.py*. Here, the *source* represents the input control images prepared in step 1 and the *target* represents the original images without any overlapped mask. \
 Step 6: Train the model using *train.py*. In the *resume_path* variable, you can provide the path to the checkpoint mentioned in step 4. Also, this variable can be used later to load the checkpoint of your trained model. Additionally, set a *default_root_dir* in line 40, where you want to save the model's checkpoints. \
@@ -42,6 +42,9 @@ Step 8: You can either use the sample weights provided in the Detection folder (
 Step 1:  To load the test set, prepare a JSON file similar to sample_test.json and provide its path in *dataset_test_load.py*. Here, the *source* represents the custom-masked input control images (which you want to test) and the *target* is a dummy placeholder requiring some image path but will not be used anywhere (you can provide any dummy path). \
 Step 2: Run *train.py* with max_epochs=0 in line 40 and set resume_path in line 14 to the path of the checkpoint you want to use for evaluation. \
 Step 3: After obtaining the generated images, validate them through the Detector trained in subsection Training, step 8. 
+```
+yolo task=detect mode=val model=best.pt name=inference conf=0.7 data=custom.yaml imgsz=256 save_json=True plots=True
+```
 
 ### Citation
 Please cite our work if you find it useful.
