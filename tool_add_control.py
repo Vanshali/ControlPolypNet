@@ -24,7 +24,7 @@ def get_node_name(name, parent_name):
     return True, name[len(parent_name):]
 
 
-model = create_model(config_path='/models/cldm_v15.yaml')  # Replace with path to cldm_v15.yaml file inside models folder
+model = create_model(config_path='./models/cldm_v15.yaml')  # Replace with path to cldm_v15.yaml file inside models folder
 
 pretrained_weights = torch.load(input_path)
 if 'state_dict' in pretrained_weights:
