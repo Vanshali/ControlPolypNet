@@ -10,6 +10,7 @@ In recent years, generative models have been very popular in medical imaging app
 <div align="center">
 <img src="figures/intro.png" alt="Polyp Generation" width="500"/> 
 </div>
+
 *Figure 1:  Controlling polyp generation using custom masks while leveraging largely accessible non-polyp/negative images. We turned negative samples into positive ones with controlled polyp shape, size and location.*
 
 ### General Comparison with Conventional Approaches
@@ -20,7 +21,7 @@ In recent years, generative models have been very popular in medical imaging app
 - *ControlPolypNet* consists of three main parts: (a) Stable Diffusion U-Net architecture loaded with pre-trained weights of SD v1-5, (b) ControlNet, and (c) YOLOv8, a detector pre-trained on the polyp images. 
 - To make the model learn the mapping $N' \rightarrow P'$, we prepared our training set such that initially, it learns $M \rightarrow P$.
 ![ControlPolypNet](figures/controlnet_diag1.svg)
-*Figure 3: The proposed framework uses custom-masked images as input control with a ``polyp" text prompt. The pre-processing pipeline shows the elimination of uninformative negative frames. Custom masks are used to generate polyps during the evaluation phase of \textit{ControlPolypNet}. The generated polyp images are fed to a YOLOv8 detector that selects clinically significant frames with a confidence score >= 0.7.*
+*Figure 3: The proposed framework uses custom-masked images as input control with a ``polyp" text prompt. The pre-processing pipeline shows the elimination of uninformative negative frames. Custom masks are used to generate polyps during the evaluation phase of ControlPolypNet. The generated polyp images are fed to a YOLOv8 detector that selects clinically significant frames with a confidence score >= 0.7.*
 
 ### 3. Installation
 ```
@@ -43,7 +44,7 @@ Step 8: You can either use the sample weights provided in the Detection folder (
 ### 5. Testing
 Step 1:  To load the test set, prepare a JSON file similar to sample_test.json and provide its path in *dataset_test_load.py*. Here, the *source* represents the custom-masked input control images (which you want to test) and the *target* is a dummy placeholder requiring some image path but will not be used anywhere (you can provide any dummy path). \
 Step 2: Run *train.py* with max_epochs=0 in line 40 and set resume_path in line 14 to the path of the checkpoint you want to use for evaluation. \
-Step 3: After obtaining the generated images, validate them through the Detector trained in subsection Training, step 8. 
+Step 3: After obtaining the generated images, validate them through the Detector trained in section Training, step 8. 
 ```
 yolo task=detect mode=val model=best.pt name=inference conf=0.7 data=custom.yaml imgsz=256 save_json=True plots=True
 ```
