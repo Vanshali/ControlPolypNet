@@ -1,3 +1,5 @@
+# Part of the code used from ControlNet GitHub repository https://github.com/lllyasviel/ControlNet and https://github.com/ultralytics/ultralytics/tree/main
+
 # from share import *
 
 import pytorch_lightning as pl
